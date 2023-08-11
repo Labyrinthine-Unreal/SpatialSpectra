@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import img6 from "../assets/Images/6.webp";
 import img13 from "../assets/Images/13.webp";
-import img12 from "../assets/Images/12.webp";
 import img14 from "../assets/Images/14.webp";
 import img16 from "../assets/Images/16.webp";
 
