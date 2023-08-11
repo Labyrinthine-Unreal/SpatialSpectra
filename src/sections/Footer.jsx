@@ -1,0 +1,211 @@
+import { motion } from "framer-motion";
+import React from "react";
+import { useLocomotiveScroll } from "react-locomotive-scroll";
+import styled from "styled-components";
+
+// import Logo from "../assets/Svgs/11.svg";
+
+const Section = styled.section`
+  min-height: 100vh;
+  width: 100%;
+  /* margin: 5rem auto; */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+
+
+  background-color: ${(props) => props.theme.body};
+  color: ${(props) => props.theme.text};
+
+  position: relative;
+`;
+
+const LogoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 10vw;
+    height: auto;
+  }
+
+  h3 {
+    font-family: "Sirin Stencil";
+    font-size: ${(props) => props.theme.fontxxl};
+
+    @media (max-width: 48em) {
+      font-size: ${(props) => props.theme.fontxl};
+    }
+  }
+`;
+
+const FooterComponent = styled(motion.footer)`
+  width: 80vw;
+
+  @media (max-width: 48em) {
+    width: 90vw;
+  }
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 2rem;
+    margin-top: 4rem;
+    padding: 0 1rem;
+    border-top: 1px solid ${(props) => props.theme.text};
+    border-bottom: 1px solid ${(props) => props.theme.text};
+
+    @media (max-width: 48em) {
+      justify-content: center;
+    }
+  }
+
+  li {
+    padding: 2rem;
+    font-size: ${(props) => props.theme.fontlg};
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 48em) {
+      padding: 1rem;
+      font-size: ${(props) => props.theme.fontmd};
+    }
+  }
+`;
+
+const Bottom = styled.div`
+  padding: 0.5rem 0;
+  margin: 0 4rem;
+  font-size: ${(props) => props.theme.fontlg};
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 64em) {
+    flex-direction: column;
+    justify-content: center;
+    span {
+      transform: none !important;
+    }
+  }
+
+  @media (max-width: 48em) {
+    font-size: ${(props) => props.theme.fontmd};
+  }
+`;
+
+const Footer = () => {
+  const { scroll } = useLocomotiveScroll();
+
+  const handleScroll = (id) => {
+    let elem = document.querySelector(id);
+    // console.log(elem);
+    scroll.scrollTo(elem, {
+      offset: "-100",
+      duration: "2000",
+      easing: [0.25, 0.0, 0.35, 1.0],
+    });
+  };
+
+  return (
+    <Section>
+      <LogoContainer>
+        {/* <img
+          width="300"
+          height="300"
+          src={Logo}
+          alt="$VeN"
+          data-scroll
+          data-scroll-speed="2"
+        /> */}
+        <h3 data-scroll data-scroll-speed="-1">
+        Spatial Spectra
+        </h3>
+      </LogoContainer>
+      <FooterComponent
+        initial={{ y: "-400px" }}
+        whileInView={{ y: 0 }}
+        viewport={{ once: false }}
+        transition={{
+          duration: 1.5,
+        }}
+      >
+        <ul>
+          <li aria-hidden="true" onClick={() => handleScroll("#home")}>
+            Home
+          </li>
+          <li aria-hidden="true" onClick={() => handleScroll(".about")}>
+            About
+          </li>
+          <li aria-hidden="true" onClick={() => handleScroll("#shop")}>
+            Browse
+          </li>
+          <li aria-hidden="true" onClick={() => handleScroll(".new-arrival")}>
+            Architecture Spotlight
+          </li>
+          {/* <li>
+            <a href="https://google.com" target={"_blank"} rel="noreferrer">
+              look book
+            </a>
+          </li>
+          <li>
+            <a href="https://google.com" target={"_blank"} rel="noreferrer">
+              reviews
+            </a>
+          </li> */}
+          </ul>
+          Discover the artistry and innovation that shape the world around us through TaurosDAO: Spatial Spectra. We delve into the realms of design, construction, and urban landscapes, offering insightful perspectives on the ever-evolving architectural panorama. Join us on a journey to explore the fusion of creativity and functionality, where each issue unveils the stories behind remarkable structures and the visionaries who bring them to life.
+        <br />
+        <br />
+        Stay in the loop with the latest architectural innovations, design inspirations, and urban insights brought to you by TaurosDAO. Explore our website for more captivating articles, interviews, and visual journeys.
+
+
+          <br />
+          <br />
+        {/* </ul> */}
+        <Bottom>
+
+          <span
+            data-scroll
+            data-scroll-speed="2"
+            data-scroll-direction="horizontal"
+          >
+            &copy; 2023. All Rights Reserved.
+          </span>
+          {/* <span
+            data-scroll
+            data-scroll-speed="-2"
+            data-scroll-direction="horizontal"
+          >
+            Optimized with &hearts; by{" "}
+            <a
+              href="https://twitter.com/taurosDAO"
+              target={"_blank"}
+              rel="dofollow noreferrer"
+            >
+              TaurosDAO
+            </a>
+          </span> */}
+        </Bottom>
+      </FooterComponent>
+    </Section>
+  );
+};
+
+export default Footer;
