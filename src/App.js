@@ -11,7 +11,7 @@ import About from "./sections/About";
 import Footer from "./sections/Footer";
 import Home from "./sections/Home";
 import Marquee from "./sections/Marquee";
-import NewArrival from "./sections/NewArrival";
+// import NewArrival from "./sections/NewArrival";
 import Shop from "./sections/Shop";
 // import globalStyles from "./styles/globalStyles";
 import { dark } from "./styles/Themes";
@@ -65,7 +65,7 @@ function App() {
 
               <Home key="home" />
               <About key="about" />
-              <NewArrival key="new arrival" />
+              {/* <NewArrival key="new arrival" /> */}
               <Marquee key="marquee" />
               <Shop key="Shop" />
               <Footer key="Footer" />
