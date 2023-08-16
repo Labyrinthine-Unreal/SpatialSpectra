@@ -1,5 +1,5 @@
 import "locomotive-scroll/dist/locomotive-scroll.css";
-import React from 'react'
+
 import { AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
@@ -16,29 +16,10 @@ import Shop from "./sections/Shop";
 // import globalStyles from "./styles/globalStyles";
 import { dark } from "./styles/Themes";
 
-
-function useMediaQuery(query) {
-  const [matches, setMatches] = React.useState(false);
-  React.useEffect(() => {
-    const matchQueryList = window.matchMedia(query);
-    function handleChange(e) {
-      setMatches(e.matches);
-    }
-    matchQueryList.addEventListener("change", handleChange);
-    return () => {
-      matchQueryList.removeEventListener("change", handleChange);
-    };
-  }, [query]);
-  return matches;
-}
-
-
-
 function App() {
   // useLocoScroll();
   const containerRef = useRef(null);
   const [Loaded, setLoaded] = useState(false);
-  const isMobile = useMediaQuery("min-width: 768px)");
 
   useEffect(() => {
     setTimeout(() => {
@@ -49,7 +30,6 @@ function App() {
   return (
     <>
       {/* <globalStyles /> */}
-      <h1>Browsing with {isMobile ? "phone" : "desktop"}</h1>;
       <ThemeProvider theme={dark}>
         <LocomotiveScrollProvider
           options={{
